@@ -1,17 +1,41 @@
-name: Bearer
+name: Security Scan
 
 on:
   push:
     branches:
-      - main
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * 0'  # Run weekly on Sunday
 
 permissions:
   contents: read
+  security-events: write
 
 jobs:
-  rule_check:
+  security-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Bearer
+      
+      - name: Bearer Security Scan
         uses: bearer/bearer-action@v2
+        with:
+          scan-type: security
+          output: sarif
+          sarif-file: bearer.sarif
+          fail-on: high
+          rules: all
+          
+      - name: Upload SARIF results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: bearer.sarif
+          
+      - name: Check for high severity issues
+        if: failure()
+        run: |
+          echo "High severity security issues found. Please review the Bearer scan results."
+          exit 1
