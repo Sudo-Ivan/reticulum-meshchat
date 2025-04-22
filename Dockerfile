@@ -1,33 +1,51 @@
 # Build the frontend
-FROM node:20-bookworm-slim AS build-frontend
+FROM node:20-alpine AS build-frontend
 
 WORKDIR /src
 
 # Copy required source files
-COPY *.json .
-COPY *.js .
-COPY src/frontend ./src/frontend
+COPY --chown=node:node *.json .
+COPY --chown=node:node *.js .
+COPY --chown=node:node src/frontend ./src/frontend
 
-# Install NodeJS deps, exluding electron
+# Fix permissions and install NodeJS deps
+USER root
+RUN chown -R node:node /src
+USER node
 RUN npm install --omit=dev && \
   npm run build-frontend
 
 # Main app build
-FROM python:3.11-bookworm
+FROM python:3.11-alpine
 
 WORKDIR /app
 
-# Install Python deps
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
+# Install system dependencies
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    python3-dev \
+    libffi-dev \
+    openssl-dev
 
-# Copy prebuilt frontend
-COPY --from=build-frontend /src/public public
+# Create config directories with proper permissions
+RUN mkdir -p /config/.reticulum /config/.meshchat && \
+    chown -R 1000:1000 /config
+
+# Install Python deps
+COPY --chown=1000:1000 ./requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Create public directory and copy frontend
+RUN mkdir -p /app/public
+COPY --from=build-frontend --chown=1000:1000 /src/public/ /app/public/
 
 # Copy other required source files
-COPY *.py .
-COPY src/__init__.py ./src/__init__.py
-COPY src/backend ./src/backend
-COPY *.json .
+COPY --chown=1000:1000 *.py .
+COPY --chown=1000:1000 src/__init__.py ./src/__init__.py
+COPY --chown=1000:1000 src/backend ./src/backend
+COPY --chown=1000:1000 *.json .
 
-CMD ["python", "meshchat.py", "--host=0.0.0.0", "--reticulum-config-dir=/config/.reticulum", "--storage-dir=/config/.meshchat", "--headless"]
+USER 1000
+ENTRYPOINT ["python"]
+CMD ["meshchat.py", "--host=0.0.0.0", "--reticulum-config-dir=/config/.reticulum", "--storage-dir=/config/.meshchat", "--headless"]

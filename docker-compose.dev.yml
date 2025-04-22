@@ -1,8 +1,10 @@
 services:
   reticulum-meshchat:
-    container_name: reticulum-meshchat
-    image: ghcr.io/liamcottle/reticulum-meshchat:latest
-    pull_policy: always
+    container_name: reticulum-meshchat-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    pull_policy: never
     restart: unless-stopped
     user: "1000:1000"
     # Make the meshchat web interface accessible from the host on port 8000
@@ -10,6 +12,8 @@ services:
       - 0.0.0.0:8000:8000
     volumes:
       - meshchat-config:/config:rw
+      - .:/app:delegated
+      - /app/public
     # Uncomment if you have a USB device connected, such as an RNode
     # devices:
     #   - /dev/ttyUSB0:/dev/ttyUSB0
@@ -29,3 +33,8 @@ services:
 
 volumes:
     meshchat-config:
+      driver: local
+      driver_opts:
+        type: none
+        o: bind
+        device: ${PWD}/config 

@@ -1,3 +1,12 @@
+# Ivans Fork Edition
+
+- Rootless Docker Container
+- Resource Limits
+- Drop unnecassary permissions in container
+
+
+
+
 <p align="center">
 <a href="https://github.com/liamcottle/reticulum-meshchat"><img src="./logo/logo-chat-bubble.png" width="150"></a>
 </p>
