@@ -1,8 +1,11 @@
 # Ivans Fork Edition
 
-- Rootless Docker Container
+## Containers
+
+- Drop unnecassary permissions
+- Rootless
 - Resource Limits
-- Drop unnecassary permissions in container
+- Alpine Image Variants
 
 
 
