@@ -23,11 +23,12 @@ jobs:
       - name: Bearer Security Scan
         uses: bearer/bearer-action@v2
         with:
-          scanner: security
+          scanner: sast
           format: sarif
           output: bearer.sarif
-          severity: high
+          severity: critical,high
           path: .
+          exit-code: 1
           
       - name: Upload SARIF results
         uses: github/codeql-action/upload-sarif@v2
