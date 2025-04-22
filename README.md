@@ -7,8 +7,12 @@
 - Resource Limits
 - Alpine Image Variants
 
+## Security
 
+- Bearer Security Scan Action
+- [Socket](https://socket.dev/) Supply Chain Security/Analysis
 
+---
 
 <p align="center">
 <a href="https://github.com/liamcottle/reticulum-meshchat"><img src="./logo/logo-chat-bubble.png" width="150"></a>
