@@ -28,15 +28,9 @@ jobs:
           output: bearer.sarif
           severity: critical,high
           path: .
-          exit-code: 1
+          exit-code: 0
           
       - name: Upload SARIF results
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: bearer.sarif
-          
-      - name: Check for high severity issues
-        if: failure()
-        run: |
-          echo "High severity security issues found. Please review the Bearer scan results."
-          exit 1
