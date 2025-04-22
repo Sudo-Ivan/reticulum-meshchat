@@ -1,7 +1,7 @@
 services:
   reticulum-meshchat:
     container_name: reticulum-meshchat
-    image: ghcr.io/liamcottle/reticulum-meshchat:latest
+    image: ghcr.io/sudo-ivan/reticulum-meshchat:latest
     pull_policy: always
     restart: unless-stopped
     user: "1000:1000"
