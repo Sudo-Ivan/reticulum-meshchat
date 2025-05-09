@@ -2,10 +2,12 @@
 
 ## Containers
 
-- Drop unnecassary permissions
-- Rootless
-- Resource Limits
+- Drop unnecassary permissions (compose)
+- Rootless (user 1000:1000)
+- Resource Limits (compose)
 - Alpine Image Variants
+- Updated Dependencies
+- Dockerfile use python 3.13
 
 ## Security
 
