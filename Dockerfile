@@ -16,7 +16,7 @@ RUN npm install --omit=dev && \
   npm run build-frontend
 
 # Main app build
-FROM python:3.11-alpine
+FROM python:3.13-alpine
 
 WORKDIR /app
 
