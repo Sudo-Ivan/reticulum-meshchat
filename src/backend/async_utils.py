@@ -2,12 +2,10 @@ import asyncio
 
 
 class AsyncUtils:
-
     # this method allows running the provided async coroutine from within a sync function
     # it will run the async function on the existing event loop if available, otherwise it will start a new event loop
     @staticmethod
     def run_async(coroutine):
-
         # attempt to get existing event loop
         existing_event_loop = None
         try:
