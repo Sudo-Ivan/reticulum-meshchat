@@ -1,6 +1,6 @@
 {
   "name": "reticulum-meshchat",
-  "version": "1.23.1",
+  "version": "1.23.6",
   "description": "",
   "main": "electron/main.js",
   "scripts": {
@@ -71,8 +71,7 @@
     "linux": {
       "artifactName": "ReticulumMeshChat-v${version}-${os}.${ext}",
       "target": [
-        "AppImage",
-        "flatpak"
+        "AppImage"
       ],
       "category": "Network",
       "icon": "electron/build/icon.png",
@@ -96,14 +95,6 @@
       "artifactName": "ReticulumMeshChat-v${version}-${os}-installer.${ext}",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
-    },
-    "flatpak": {
-      "finish-args": [
-        "--share=network",
-        "--socket=x11",
-        "--socket=wayland",
-        "--device=all"
-      ]
     }
   },
   "dependencies": {

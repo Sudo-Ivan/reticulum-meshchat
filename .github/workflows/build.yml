@@ -109,12 +109,6 @@ jobs:
       - name: Build Electron App
         run: npm run dist
 
-      - name: Upload Flatpak Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: flatpak
-          path: dist/*.flatpak
-
       - name: Create Release
         id: create_release
         uses: ncipollo/release-action@v1
