@@ -4,6 +4,13 @@ on:
   push:
     tags:
       - "*"
+  workflow_dispatch:
+    inputs:
+      retry_failed:
+        description: 'Retry failed jobs'
+        required: false
+        type: boolean
+        default: false
 
 jobs:
   build_windows:
