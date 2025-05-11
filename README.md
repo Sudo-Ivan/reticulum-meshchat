@@ -10,9 +10,8 @@ highly experimental and customized, only use if you live on the edge.
 - Alpine Image Variants.
 - Updated Dependencies.
 - Dark mode by default.
-- Python 3.13 and Node 20.
+- Python 3.13 and Node 22.
 - Ruff formatting and fixes.
-- Flatpak support. (WIP)
 
 ## Security
 
