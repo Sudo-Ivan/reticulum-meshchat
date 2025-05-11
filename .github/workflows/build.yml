@@ -97,6 +97,13 @@ jobs:
       - name: Clone Repo
         uses: actions/checkout@v1
 
+      - name: Install Flatpak
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak
+          flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak install -y flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
+
       - name: Install NodeJS
         uses: actions/setup-node@v1
         with:
