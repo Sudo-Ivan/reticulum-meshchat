@@ -1,12 +1,13 @@
 # Ivans Fork Edition
 
-## Containers
+## Changes
 
 - Drop unnecassary permissions (compose)
 - Rootless (user 1000:1000)
 - Resource Limits (compose)
 - Alpine Image Variants
 - Updated Dependencies
+- Dark mode by default
 - Dockerfile use python 3.13
 
 ## Security
