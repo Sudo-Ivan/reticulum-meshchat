@@ -1,4 +1,6 @@
-# Ivans Fork Edition
+# Ivans Custom Fork Edition
+
+highly experimental and customized, only use if you live on the edge.
 
 ## Changes
 
@@ -10,6 +12,7 @@
 - Dark mode by default.
 - Python 3.13 and Node 20.
 - Ruff formatting and fixes.
+- Flatpak support. (WIP)
 
 ## Security
 
