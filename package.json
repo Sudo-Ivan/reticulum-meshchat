@@ -98,7 +98,7 @@
       "allowToChangeInstallationDirectory": true
     },
     "flatpak": {
-      "finish-args": [
+      "finishArgs": [
         "--share=network",
         "--socket=x11",
         "--socket=wayland",
