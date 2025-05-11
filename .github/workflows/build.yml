@@ -17,12 +17,12 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Install Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.13"
 
       - name: Install Python Deps
         run: pip install -r requirements.txt
@@ -44,43 +44,43 @@ jobs:
           omitNameDuringUpdate: true
           artifacts: "dist/*-win-installer.exe,dist/*-win-portable.exe"
 
-  build_mac:
-    runs-on: macos-13
-    permissions:
-      contents: write
-    steps:
-      - name: Clone Repo
-        uses: actions/checkout@v1
+  # build_mac:
+  #   runs-on: macos-13
+  #   permissions:
+  #     contents: write
+  #   steps:
+  #     - name: Clone Repo
+  #       uses: actions/checkout@v1
 
-      - name: Install NodeJS
-        uses: actions/setup-node@v1
-        with:
-          node-version: 18
+  #     - name: Install NodeJS
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 20
 
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+  #     - name: Install Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: "3.13"
 
-      - name: Install Python Deps
-        run: pip install -r requirements.txt
+  #     - name: Install Python Deps
+  #       run: pip install -r requirements.txt
 
-      - name: Install NodeJS Deps
-        run: npm install
+  #     - name: Install NodeJS Deps
+  #       run: npm install
 
-      - name: Build Electron App
-        run: npm run dist
+  #     - name: Build Electron App
+  #       run: npm run dist
 
-      - name: Create Release
-        id: create_release
-        uses: ncipollo/release-action@v1
-        with:
-          draft: true
-          allowUpdates: true
-          replacesArtifacts: true
-          omitDraftDuringUpdate: true
-          omitNameDuringUpdate: true
-          artifacts: "dist/*-mac.dmg"
+  #     - name: Create Release
+  #       id: create_release
+  #       uses: ncipollo/release-action@v1
+  #       with:
+  #         draft: true
+  #         allowUpdates: true
+  #         replacesArtifacts: true
+  #         omitDraftDuringUpdate: true
+  #         omitNameDuringUpdate: true
+  #         artifacts: "dist/*-mac.dmg"
 
   build_linux:
     runs-on: ubuntu-latest
@@ -93,12 +93,12 @@ jobs:
       - name: Install NodeJS
         uses: actions/setup-node@v1
         with:
-          node-version: 18
+          node-version: 22
 
       - name: Install Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.13"
 
       - name: Install Python Deps
         run: pip install -r requirements.txt

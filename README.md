@@ -8,7 +8,7 @@
 - Alpine Image Variants.
 - Updated Dependencies.
 - Dark mode by default.
-- Dockerfile use python 3.13
+- Python 3.13 and Node 20.
 - Ruff formatting and fixes.
 
 ## Security

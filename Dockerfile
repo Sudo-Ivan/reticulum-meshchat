@@ -1,5 +1,5 @@
 # Build the frontend
-FROM node:20-alpine AS build-frontend
+FROM node:22-alpine AS build-frontend
 
 WORKDIR /src
 
