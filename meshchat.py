@@ -3253,7 +3253,7 @@ class Config:
     auto_announce_enabled = BoolConfig("auto_announce_enabled", False)
     auto_announce_interval_seconds = IntConfig("auto_announce_interval_seconds", 0)
     last_announced_at = IntConfig("last_announced_at", None)
-    theme = StringConfig("theme", "light")
+    theme = StringConfig("theme", "dark")
     auto_resend_failed_messages_when_announce_received = BoolConfig("auto_resend_failed_messages_when_announce_received", True)
     allow_auto_resending_failed_messages_with_attachments = BoolConfig("allow_auto_resending_failed_messages_with_attachments", False)
     auto_send_failed_messages_to_propagation_node = BoolConfig("auto_send_failed_messages_to_propagation_node", False)
