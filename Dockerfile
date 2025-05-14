@@ -1,26 +1,21 @@
-# Build the frontend
 FROM node:22-alpine AS build-frontend
 
 WORKDIR /src
 
-# Copy required source files
 COPY --chown=node:node *.json .
 COPY --chown=node:node *.js .
 COPY --chown=node:node src/frontend ./src/frontend
 
-# Fix permissions and install NodeJS deps
 USER root
 RUN chown -R node:node /src
 USER node
 RUN npm install --omit=dev && \
   npm run build-frontend
 
-# Main app build
 FROM python:3.13-alpine
 
 WORKDIR /app
 
-# Install system dependencies
 RUN apk add --no-cache \
     gcc \
     musl-dev \
@@ -28,19 +23,15 @@ RUN apk add --no-cache \
     libffi-dev \
     openssl-dev
 
-# Create config directories with proper permissions
 RUN mkdir -p /config/.reticulum /config/.meshchat && \
     chown -R 1000:1000 /config
 
-# Install Python deps
 COPY --chown=1000:1000 ./requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Create public directory and copy frontend
 RUN mkdir -p /app/public
 COPY --from=build-frontend --chown=1000:1000 /src/public/ /app/public/
 
-# Copy other required source files
 COPY --chown=1000:1000 *.py .
 COPY --chown=1000:1000 src/__init__.py ./src/__init__.py
 COPY --chown=1000:1000 src/backend ./src/backend
