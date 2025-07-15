@@ -4,13 +4,12 @@ highly experimental and customized, only use if you live on the edge.
 
 ## Changes
 
-- Drop unnecassary permissions (compose)
-- Rootless (user 1000:1000)
-- Resource Limits (compose)
-- Alpine Image Variants.
-- Updated Dependencies.
+- Drop unnecassary permissions (docker compose)
+- Rootless Docker (user 1000:1000)
+- Resource Limits (docker compose)
+- Alpine Image Variants for Dockerfile.
 - Dark mode by default.
-- Python 3.13 and Node 22.
+- Python 3.13 and Node 23.
 - Ruff formatting and fixes.
 
 ## Security
