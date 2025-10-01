@@ -70,7 +70,10 @@
     },
     "linux": {
       "artifactName": "ReticulumMeshChat-v${version}-${os}.${ext}",
-      "target": "AppImage",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
       "extraFiles": [
         {
           "from": "build/exe",
