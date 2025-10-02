@@ -118,7 +118,7 @@ jobs:
           replacesArtifacts: true
           omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
-          artifacts: "dist/*-linux.AppImage"
+          artifacts: "dist/*-linux.AppImage,dist/*-linux.deb"
 
   build_docker:
     runs-on: ubuntu-latest
