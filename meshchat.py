@@ -508,7 +508,7 @@ class ReticulumMeshChat:
             # handle I2P interface
             if interface_type == "I2PInterface":
                 interface_details['connectable'] = "True"
-                interface_details["peers"] = data.get('peers')
+                InterfaceEditor.update_value(interface_details, data, "peers")
 
             # handle tcp server interface
             if interface_type == "TCPServerInterface":
