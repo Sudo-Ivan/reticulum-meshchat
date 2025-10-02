@@ -374,6 +374,13 @@ class ReticulumMeshChat:
                 if "interface_enabled" in interface:
                     interface["interface_enabled"] = "true"
 
+                keys_to_remove = []
+                for key, value in interface.items():
+                    if value is None:
+                        keys_to_remove.append(key)
+                for key in keys_to_remove:
+                    del interface[key]
+
             # save config
             self.reticulum.config.write()
 
@@ -396,6 +403,13 @@ class ReticulumMeshChat:
                     interface["enabled"] = "false"
                 if "interface_enabled" in interface:
                     interface["interface_enabled"] = "false"
+
+                keys_to_remove = []
+                for key, value in interface.items():
+                    if value is None:
+                        keys_to_remove.append(key)
+                for key in keys_to_remove:
+                    del interface[key]
 
             # save config
             self.reticulum.config.write()
